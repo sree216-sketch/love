@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>❤️ For You ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      font-family: Arial, sans-serif;
+    }
+
+    #startScreen {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to bottom, #ffb6c1, #ffe4e1);
+      text-align: center;
+    }
+
+    #startScreen h1 {
+      color: #d6336c;
+      font-size: 36px;
+      margin-bottom: 30px;
+    }
+
+    button {
+      padding: 16px 28px;
+      font-size: 18px;
+      background-color: #ff4d6d;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+    }
+
+    #photoScreen {
+      display: none;
+      height: 100vh;
+      width: 100vw;
+      position: relative;
+      background: black;
+    }
+
+    #photoScreen img {
+      width: 100vw;
+      height: 100vh;
+      object-fit: contain; /* shows full image without cutting */
+    }
+
+    #audioBtn {
+      position: absolute;
+      bottom: 35px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: none;
+      padding: 14px 26px;
+      font-size: 17px;
+      background-color: rgba(255, 77, 109, 0.9);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- First Screen -->
+  <div id="startScreen">
+    <h1>❤️ I Love You ❤️</h1>
+    <h2>“I didn’t just fall in love with you… I grew into it.<br>
+You were my best friend first, and then you slowly became my heart.<br>
+Somewhere between friendship and love, you became my forever.<br>
+And now, my happiness begins and ends with you.”</h2>
+<br><br>
+    <button onclick="showPhoto()">Tap for Surprise 💕</button>
+  </div>
+
+  <!-- Full Screen Image -->
+  <div id="photoScreen">
+    <img src="mine.png" alt="Valentine Image">
+    <button id="audioBtn" onclick="playVoice()">Hear Me 🎧</button>
+  </div>
+
+  <audio id="voice">
+    <source src="voice.m4a" type="audio/mpeg">
+  </audio>
+
+  <script>
+    function showPhoto() {
+      document.getElementById("startScreen").style.display = "none";
+      document.getElementById("photoScreen").style.display = "block";
+
+      // show Hear Me button after image is visible
+      setTimeout(() => {
+        document.getElementById("audioBtn").style.display = "block";
+      }, 2000);
+    }
+
+    function playVoice() {
+      document.getElementById("voice").play();
+    }
+  </script>
+
+</body>
+</html>
