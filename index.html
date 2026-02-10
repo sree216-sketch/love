@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
-    /* General Styles */
     body {
       margin: 0;
       font-family: 'Comic Sans MS', cursive, sans-serif;
@@ -13,7 +12,7 @@
       background: radial-gradient(circle at center, #ffdee9, #b5fffc);
     }
 
-    /* Heart Floating Animation */
+    /* Floating Hearts */
     .heart {
       position: absolute;
       font-size: 24px;
@@ -42,14 +41,14 @@
     }
 
     #startScreen h1 {
-      font-size: 48px;
+      font-size: 42px;
       margin-bottom: 20px;
       text-shadow: 2px 2px 8px #fff;
     }
 
     #startScreen h2 {
-      font-size: 20px;
-      line-height: 1.5;
+      font-size: 18px;
+      line-height: 1.6;
       color: #800040;
       margin-bottom: 40px;
       text-shadow: 1px 1px 4px #fff;
@@ -57,7 +56,7 @@
 
     button {
       padding: 18px 36px;
-      font-size: 20px;
+      font-size: 18px;
       background-color: #ff4d6d;
       color: white;
       border: none;
@@ -68,12 +67,12 @@
     }
 
     button:hover {
-      transform: scale(1.1);
+      transform: scale(1.08);
     }
 
     @keyframes fadeIn {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     /* Hearts container */
@@ -83,18 +82,32 @@
       height: 100%;
       pointer-events: none;
       overflow: hidden;
-      z-index: 10; /* above all content */
+      z-index: 10;
     }
 
-    /* Photo Screen Button Animation */
+    /* Photo Screen */
+    #photoScreen {
+      display: none;
+      height: 100vh;
+      width: 100vw;
+      position: relative;
+      background: black;
+    }
+
+    #photoScreen img {
+      width: 100vw;
+      height: 100vh;
+      object-fit: contain;
+    }
+
+    /* Audio Button - RIGHT SIDE */
     #audioBtn {
       position: absolute;
       bottom: 35px;
-      left: 50%;
-      transform: translateX(-50%);
+      right: 25px;
       display: none;
       padding: 16px 30px;
-      font-size: 18px;
+      font-size: 17px;
       background-color: #ff4d6d;
       color: white;
       border-radius: 50px;
@@ -104,27 +117,17 @@
     }
 
     @keyframes pulse {
-      0% { transform: translateX(-50%) scale(1); }
-      50% { transform: translateX(-50%) scale(1.2); }
-      100% { transform: translateX(-50%) scale(1); }
+      0% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+      100% { transform: scale(1); }
     }
 
-    /* Instruction text above button */
-    #instructionText {
-      position: absolute;
-      bottom: 120px;
-      left:50%;
-      transform: translateX(-50%);
-      color:white;
-      font-size:16px;
-      text-shadow:2px 2px 5px #000;
-      z-index: 20;
-    }
   </style>
 </head>
 
 <body>
-  <!-- Hearts floating in background (works on both screens) -->
+
+  <!-- Floating Hearts -->
   <div id="heartsContainer"></div>
 
   <!-- First Screen -->
@@ -134,34 +137,31 @@
       “I didn’t just fall in love with you… I grew into it.<br> 
       You were my best friend first, and then you slowly became my heart.<br> 
       Somewhere between friendship and love, you became my forever.<br> 
-      And now, my happiness begins and ends with you.”<br><br>
+      And now, my happiness begins and ends with you.”
+      <br><br>
       Tap below to see the love I made just for you 💕
     </h2>
     <button onclick="showPhoto()">Tap For Your Surprise 💖</button>
   </div>
 
-  <!-- Full Screen Image -->
-  <div id="photoScreen" style="display:none; height:100vh; width:100vw; position:relative; background:black;">
-    <img src="mine.png" alt="Valentine Image" style="width:100vw; height:100vh; object-fit:contain; z-index:1;">
-
-    <!-- Audio Button -->
-    <button id="audioBtn" onclick="toggleVoice()">Hear Me 🎧</button>
+  <!-- Photo Screen -->
+  <div id="photoScreen">
+    <img src="mine.png" alt="Valentine Image">
+    <button id="audioBtn" onclick="toggleVoice()">Hear Me 💖</button>
   </div>
 
   <!-- Audio -->
   <audio id="voice">
-    <source src="voice.m4a" type="audio/mpeg">
+    <source src="voice.m4a" type="audio/mp4">
   </audio>
 
   <script>
-    // Show photo screen
     function showPhoto() {
       document.getElementById("startScreen").style.display = "none";
       document.getElementById("photoScreen").style.display = "block";
       document.getElementById("audioBtn").style.display = "block";
     }
 
-    // Toggle play/pause audio
     function toggleVoice() {
       const audio = document.getElementById("voice");
       const btn = document.getElementById("audioBtn");
@@ -175,8 +175,9 @@
       }
     }
 
-    // Create floating hearts
+    // Floating Hearts Generator
     const heartsContainer = document.getElementById('heartsContainer');
+
     function createHeart() {
       const heart = document.createElement('div');
       heart.classList.add('heart');
@@ -193,5 +194,7 @@
 
     setInterval(createHeart, 300);
   </script>
+
 </body>
 </html>
+
