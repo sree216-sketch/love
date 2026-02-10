@@ -9,7 +9,7 @@
       margin: 0;
       font-family: 'Comic Sans MS', cursive, sans-serif;
       overflow: hidden;
-      background: radial-gradient(circle at center, #ffdee9, #b5fffc);
+      background: black;
     }
 
     /* Floating Hearts */
@@ -27,7 +27,7 @@
       100% { transform: translateY(-50vh) scale(1.2); opacity: 0; }
     }
 
-    /* Start Screen */
+    /* Start Screen - BLACK THEME */
     #startScreen {
       height: 100vh;
       display: flex;
@@ -36,22 +36,23 @@
       align-items: center;
       text-align: center;
       padding: 20px;
-      color: #d6336c;
+      background: black;
+      color: white;
       animation: fadeIn 2s ease-in;
     }
 
     #startScreen h1 {
       font-size: 42px;
       margin-bottom: 20px;
-      text-shadow: 2px 2px 8px #fff;
+      text-shadow: 0 0 15px #ff4d6d;
     }
 
     #startScreen h2 {
       font-size: 18px;
       line-height: 1.6;
-      color: #800040;
       margin-bottom: 40px;
-      text-shadow: 1px 1px 4px #fff;
+      color: #ffffff;
+      text-shadow: 0 0 10px rgba(255,255,255,0.5);
     }
 
     button {
@@ -175,7 +176,6 @@
       }
     }
 
-    // Floating Hearts Generator
     const heartsContainer = document.getElementById('heartsContainer');
 
     function createHeart() {
@@ -197,5 +197,3 @@
 
 </body>
 </html>
-
-
